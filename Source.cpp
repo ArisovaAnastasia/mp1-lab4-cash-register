@@ -1,4 +1,4 @@
-#include<stdio.h>
+п»ї#include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 #include<locale.h>
@@ -15,21 +15,21 @@ int check[100]{ 0 };
 void info(int l) {
 	int price = base[l].price - (base[l].price * (float)base[l].discount / 100);
 	int sum = price * base[l].count;
-	printf("Название: %s\n", base[l].name);
-	printf("Цена %i\n", base[l].price);
-	printf("Количество: %i\n", base[l].count);
-	printf("Скидка: %i %\n", base[l].discount);
-	printf("Итог: %i %\n", sum);
+	printf("РќР°Р·РІР°РЅРёРµ: %s\n", base[l].name);
+	printf("Р¦РµРЅР° %i\n", base[l].price);
+	printf("РљРѕР»РёС‡РµСЃС‚РІРѕ: %i\n", base[l].count);
+	printf("РЎРєРёРґРєР°: %i %\n", base[l].discount);
+	printf("РС‚РѕРі: %i %\n", sum);
 	return;
 }
 int code(int l) {
-	printf("Введите штрих-код(4 символа)\n");
+	printf("Р’РІРµРґРёС‚Рµ С€С‚СЂРёС…-РєРѕРґ(4 СЃРёРјРІРѕР»Р°)\n");
 	char checking[5];
 	getchar();
 	fgets(checking, 5, stdin);
 	for (int i = 0; i < l; ++i) {
 		if (!strcmp(checking, base[i].code)) {
-			printf_s("Этот товар уже существует в базе .\nВведите количество ");
+			printf_s("Р­С‚РѕС‚ С‚РѕРІР°СЂ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РІ Р±Р°Р·Рµ .\nР’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ ");
 			int amount;
 			scanf_s("%i", &amount);
 			base[i].count += amount;
@@ -39,15 +39,15 @@ int code(int l) {
 	}
 	t = l;
 	strcpy_s(base[l].code, checking);
-	printf_s("Введите информацию о продукте\n");
-	printf_s("Имя: ");
+	printf_s("Р’РІРµРґРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїСЂРѕРґСѓРєС‚Рµ\n");
+	printf_s("РРјСЏ: ");
 	getchar();
 	fgets(base[l].name, 64, stdin);
-	printf_s("\nЦена: ");
+	printf_s("\nР¦РµРЅР°: ");
 	scanf_s("%i", &base[l].price);
-	printf_s("\nКоличество: ");
+	printf_s("\nРљРѕР»РёС‡РµСЃС‚РІРѕ: ");
 	scanf_s("%i", &base[l].count);
-	printf_s("\nСкидка: ");
+	printf_s("\nРЎРєРёРґРєР°: ");
 	do {
 		scanf_s("%i", &base[l].discount);
 	} while (base[l].discount > 50 || base[l].discount < 1);
@@ -62,27 +62,27 @@ void check_pr(int l) {
 		price = base[i].price - (base[i].price * (float)base[i].discount) / 100;
 		sum = price * base[i].count;
 		t += sum;
-		printf("Название %s\n", base[j].name);
-		printf("||Kоличество %i||\n ||Цена %i||\n", base[j].count, base[j].price);
-		//printf("Общая сумма без скидки: %i\n", sum);
+		printf("РќР°Р·РІР°РЅРёРµ %s\n", base[j].name);
+		printf("||KРѕР»РёС‡РµСЃС‚РІРѕ %i||\n ||Р¦РµРЅР° %i||\n", base[j].count, base[j].price);
+		//printf("РћР±С‰Р°СЏ СЃСѓРјРјР° Р±РµР· СЃРєРёРґРєРё: %i\n", sum);
 		printf("\n");
 		base[i].count = 0;
 		strcpy_s(base[i].name, "");
 		base[i].price = 0;
 		break;
 	}
-	printf("Общая сумма: %i\n", t);
+	printf("РћР±С‰Р°СЏ СЃСѓРјРјР°: %i\n", t);
 	return;
 }
 int main() {
 	setlocale(LC_ALL, "rus");
-	printf_s("Выберите меню\n");
-	printf_s("1 «сканировать» очередной товар\n");
-	printf_s("2 вывести описание отсканированного товара,\n");
-	printf_s("3 добавить данные о товаре в чек,\n");
-	printf_s("4 сформировать чек за покупку, рассчитать итоговую сумму к оплате,\n");
-	printf_s("5 начать формирование нового чека,\n");
-	printf_s("6 завершить программу.\n");
+	printf_s("Р’С‹Р±РµСЂРёС‚Рµ РјРµРЅСЋ\n");
+	printf_s("1 В«СЃРєР°РЅРёСЂРѕРІР°С‚СЊВ» РѕС‡РµСЂРµРґРЅРѕР№ С‚РѕРІР°СЂ\n");
+	printf_s("2 РІС‹РІРµСЃС‚Рё РѕРїРёСЃР°РЅРёРµ РѕС‚СЃРєР°РЅРёСЂРѕРІР°РЅРЅРѕРіРѕ С‚РѕРІР°СЂР°,\n");
+	printf_s("3 РґРѕР±Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ С‚РѕРІР°СЂРµ РІ С‡РµРє,\n");
+	printf_s("4 СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ С‡РµРє Р·Р° РїРѕРєСѓРїРєСѓ, СЂР°СЃСЃС‡РёС‚Р°С‚СЊ РёС‚РѕРіРѕРІСѓСЋ СЃСѓРјРјСѓ Рє РѕРїР»Р°С‚Рµ,\n");
+	printf_s("5 РЅР°С‡Р°С‚СЊ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕРіРѕ С‡РµРєР°,\n");
+	printf_s("6 Р·Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ.\n");
 	int key;
 	int p = 0;
 	int l = 0;
@@ -90,30 +90,30 @@ int main() {
 		printf_s("\n");
 		scanf_s("%i", &key);
 		if (key <= 0 || key > 6)
-			printf("Введите номер меню\n");
+			printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РјРµРЅСЋ\n");
 		switch (key) {
 		case 1:
 			l = code(l);
 			break;
 		case 2:
 			if (l == 0)
-				printf_s("Чек пустой:");
+				printf_s("Р§РµРє РїСѓСЃС‚РѕР№:");
 			else
 				info(l - 1);
 			break;
 		case 3:
 			if (l == 0)
-				printf_s("Чек пустой:\n");
+				printf_s("Р§РµРє РїСѓСЃС‚РѕР№:\n");
 			else if (t == l - 1) {
 				check[p++] = l - 1;
 				t = l;
 			}
 
 			else
-				printf("Этот продук есть уже в чеке\n");
+				printf("Р­С‚РѕС‚ РїСЂРѕРґСѓРє РµСЃС‚СЊ СѓР¶Рµ РІ С‡РµРєРµ\n");
 			break;
 		case 4:
-			printf("Вы выбрали сформировать чек за покупку\n");
+			printf("Р’С‹ РІС‹Р±СЂР°Р»Рё СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ С‡РµРє Р·Р° РїРѕРєСѓРїРєСѓ\n");
 			
 			if (check[0] == -1);
 			else {
@@ -122,14 +122,14 @@ int main() {
 			}
 			break;
 		case 5:
-			printf("Вы выбрали сформировать новый чек ");
+			printf("Р’С‹ РІС‹Р±СЂР°Р»Рё СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РЅРѕРІС‹Р№ С‡РµРє ");
 			for (int i = 0; i < 100; ++i) {
 				check[i] = 0;
 				l = 0;
 			}
 			break;
 		case 6:
-			printf("Вы выбрали завершить программу ");
+			printf("Р’С‹ РІС‹Р±СЂР°Р»Рё Р·Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ ");
 			return 0;
 			break;
 		}
